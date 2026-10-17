@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function(){
 
     
     let turns = [];
-    
+
     //add X's or O's
     squares.forEach(function(square){
         square.addEventListener("click",function(){
@@ -27,6 +27,25 @@ document.addEventListener("DOMContentLoaded", function(){
             }
 
         });
+    });
+
+    //hover X's and O's
+    squares.forEach(function(square){
+        square.addEventListener("mouseover", function(){
+          if(square.textContent == ""){
+            square.classList.add("hover");
+          }
+          else{
+            square.classList.add("hover");
+          }     
+
+        });
+
+        square.addEventListener("mouseout", function(){
+            square.classList.remove("hover");
+        })
+           
+    
     });
 });
 
