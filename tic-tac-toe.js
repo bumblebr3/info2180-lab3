@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", function(){
     
     let turns = [];
     let gameOver = false;
+    let status = document.getElementById("status");
 
     //add X's or O's
     squares.forEach(function(square){
@@ -54,7 +55,6 @@ document.addEventListener("DOMContentLoaded", function(){
     //check for winner and update status
     let winningCombinations = [[0,1,2], [3,4,5], [6,7,8], [0,3,6], [1,4,7],[2,5,8], [0,4,8], [2,4,6]];
     function checkWinner(){
-        let status = document.getElementById("status");
 
         for(let combo of winningCombinations){
             let a = combo[0];
@@ -77,6 +77,19 @@ document.addEventListener("DOMContentLoaded", function(){
     }
 
     //restart game
+    let restart = document.querySelector(".btn");
+
+    restart.addEventListener("click", function(){
+        squares.forEach(function(square){
+            square.textContent = "";
+            square.classList.remove("X", "O", "hover");
+        });
+        turns.length = 0;
+        gameOver = false;
+        status.textContent = "Move your mouse over a square and click to play an X or O";
+        status.classList.remove("you-won");
+    })
+    
 });
 
 
